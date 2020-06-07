@@ -34,7 +34,7 @@
     self.delayLab.text = @"";
     
     TCPingManager *manager = [TCPingManager sharedInstance];
-    
+    // ping 4 次 取平均 最大值 最小值
     [manager OTSTCPingWithHostName:@"222.187.221.65:37018" time:@(4) currentDelay:^(double delay) {
 
         NSLog(@"delay == %.2f", delay);
