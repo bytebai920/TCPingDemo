@@ -97,7 +97,7 @@ void handler(int sig)
     double min = 999999999999999.0, avg = 0.0, max = 0.0;
     struct addrinfo *resolved;
     int errcode;
-    int seen_addrnotavail;
+    int seen_addrnotavail = 0;
     
     signal(SIGINT, handler);
     signal(SIGTERM, handler);
@@ -122,7 +122,6 @@ void handler(int sig)
             {
                 printf("error connecting to host (%d): %s\n", -errcode, strerror(-errcode));
                 err++;
-                
                 NSString *error  = [NSString stringWithUTF8String:strerror(-errcode)];
                 if (error!= nil && _failed) {
                     _failed(error);
